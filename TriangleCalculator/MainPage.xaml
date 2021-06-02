@@ -1,0 +1,62 @@
+﻿<Page
+    x:Class="TriangleCalculator.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="using:TriangleCalculator"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <Style TargetType="muxc:NumberBox">
+            <Setter Property="Margin" Value="10,5,5,5" />
+            <Setter Property="Padding" Value="5,5,5,5" />
+            <Setter Property="FontSize" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <StackPanel
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Orientation="Vertical">
+            <TextBlock
+                x:Name="instructionTextBlock"
+                Margin="0,5,0,5"
+                VerticalAlignment="Top"
+                FontSize="24">
+                Here are the instructions
+            </TextBlock>
+            <StackPanel Margin="5,5,5,5" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" FontSize="24">Height (a):</TextBlock>
+                <muxc:NumberBox x:Name="heightNumberBox" NumberFormatter="{x:Bind MyFormatter}" />
+            </StackPanel>
+            <StackPanel Margin="5,5,5,5" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" FontSize="24">Length (b):</TextBlock>
+                <muxc:NumberBox x:Name="lengthNumberBox" NumberFormatter="{x:Bind MyFormatter}" />
+            </StackPanel>
+            <StackPanel Margin="5,5,5,5" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" FontSize="24">Hypotenuse (c):</TextBlock>
+                <muxc:NumberBox x:Name="hypotenuseNumberBox" NumberFormatter="{x:Bind MyFormatter}" />
+            </StackPanel>
+            <StackPanel Margin="5,5,5,5" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" FontSize="24">Angle ac:</TextBlock>
+                <muxc:NumberBox x:Name="angleACNumberBox" NumberFormatter="{x:Bind MyFormatter}" />
+            </StackPanel>
+            <StackPanel Margin="5,5,5,5" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center" FontSize="24">Angle bc:</TextBlock>
+                <muxc:NumberBox x:Name="angleBCNumberBox" NumberFormatter="{x:Bind MyFormatter}" />
+            </StackPanel>
+            <Button
+                x:Name="calculateButton"
+                Margin="5,5,5,5"
+                Padding="5,5,5,5"
+                Click="calculateButton_Click"
+                FontSize="32">
+                CALCULATE!
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
