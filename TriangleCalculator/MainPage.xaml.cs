@@ -20,8 +20,6 @@ namespace TriangleCalculator
 {
     public sealed partial class MainPage : Page
     {
-        private const double RAD_TO_DEG_FACTOR = 180.0 / Math.PI;
-
         private INumberFormatter2 MyFormatter { get; } = new DecimalFormatter
         {
             NumberRounder = new IncrementNumberRounder
@@ -39,16 +37,9 @@ namespace TriangleCalculator
 
         private void calculateButton_Click(object sender, RoutedEventArgs e)
         {
-            var height = heightNumberBox.Value;
-            var length = lengthNumberBox.Value;
-
-            var hypotenuse = Math.Sqrt(height * height + length * length);
-            var angleAC = Math.Atan(length / height) * RAD_TO_DEG_FACTOR;
-            var angleBC = Math.Atan(height / length) * RAD_TO_DEG_FACTOR;
-
-            hypotenuseNumberBox.Value = hypotenuse;
-            angleACNumberBox.Value = angleAC;
-            angleBCNumberBox.Value = angleBC;
+            hypotenuseNumberBox.Value = RightTriangleMath.FindHypotenuse(heightNumberBox.Value, lengthNumberBox.Value);
+            angleACNumberBox.Value = RightTriangleMath.FindAngleFromSides(heightNumberBox.Value, lengthNumberBox.Value);
+            angleBCNumberBox.Value = RightTriangleMath.FindOtherAngle(angleACNumberBox.Value);
         }
     }
 }
